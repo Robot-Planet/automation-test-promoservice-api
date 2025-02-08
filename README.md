@@ -1,0 +1,1 @@
+# automation-test-promoservice-api
