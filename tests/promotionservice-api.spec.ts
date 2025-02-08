@@ -4,7 +4,8 @@ test.describe('PromotionService API Tests', () => {
     let userId: string;
 
     test('POST - ConvertOverDiscountPayment', async ({ request }) => {
-        const response = await request.post('http://10.3.0.121/PromotionService/api/ConvertOverDiscountPayment', {
+        // const response = await request.post('http://10.3.0.121/PromotionService/api/ConvertOverDiscountPayment', {
+        const response = await request.post('http://10.3.0.121/PromotionServiceXXX/api/ConvertOverDiscountPayment', {
           data: {
             "PosConnectionString": "Data Source=10.3.8.223;Initial Catalog=KPI-POS-HANA;Persist Security Info=True;User ID=sa;Password=sql2000",
             "EcouponDBConnectionString": "Data Source=10.3.8.223;Initial Catalog=eCoupon;Persist Security Info=True;User ID=sa;Password=sql2000",
