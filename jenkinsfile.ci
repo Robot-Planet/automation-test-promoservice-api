@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    triggers {
+            pollSCM('* * * * *')  // Poll SCM every 1 minutes
+    }
+
+    environment {
+        // PLAYWRIGHT_VERSION = '1.41.1-jammy'
+        PLAYWRIGHT_VERSION = '1.49.1'
+    }
+
+    // tools {
+    //     // nodejs 'NodeJS 20.9'
+    //     // nodejs 'NodeJS 20.10.0'
+    //     nodejs 'NodeJS 21.0.5' // 2025-02-05
+    // }
+    
+    stages {
+        stage('playwright') {
+            steps {
+                sh '''
+                    npm i -D @playwright/test@1.49.1
+                '''
+            }
+        }  
+        stage('test') {
+            steps {
+                sh '''
+                    npx playwright test demoproject.spec.ts --project=chromium --reporter=line
+                '''
+            }
+        }
+        // stage('show-report') {
+        //    steps {
+        //        sh '''
+        //            npx playwright show-report
+        //        '''
+        //    }
+        // }
+    }
+    post {
+        
+        failure {
+            mail to: 'rattapon.ot@gmail.com',
+                 subject: "Failed Pipeline Job ${env.JOB_NAME} Build ${env.BUILD_NUMBER}",
+                 body: "From tester to dev : Your code brokennnnnn let fix it !!!!!: ${env.BUILD_URL}"
+        }
+    }
+}
