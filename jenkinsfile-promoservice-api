@@ -42,7 +42,7 @@ pipeline {
     post {
         
         failure {
-            mail to: 'rattapon.ot@gmail.com',
+            mail to: 'rbotplanet@gmail.com',
                  subject: "Failed Pipeline Job ${env.JOB_NAME} Build ${env.BUILD_NUMBER}",
                  body: "From tester to dev : Your code brokennnnnn let fix it !!!!!: ${env.BUILD_URL}"
         }
