@@ -5,7 +5,7 @@ test.describe('PromotionService API Tests', () => {
 
     test('POST - ConvertOverDiscountPayment', async ({ request }) => {
         
-        //console.log('PromotionService/api/ConvertOverDiscountPayment');
+        console.log('PromotionService/api/ConvertOverDiscountPayment');
 
         const response = await request.post('http://10.3.0.121/PromotionService/api/ConvertOverDiscountPayment', {
         // const response = await request.post('http://10.3.0.xxx/PromotionServiceXXX/api/ConvertOverDiscountPayment', {
